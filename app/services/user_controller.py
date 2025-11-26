@@ -1,11 +1,11 @@
 from app.models.user_model import User
-from app.models.user_preference_model import UserPreference
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from app.schemas.user import UserCreate
-from app.schemas.user_preference import UserPreferenceCreate
 
 def get_users(db: Session):
-    return db.query(User).all()
+    return db.query(User)\
+        .options(joinedload(User.searches), joinedload(User.music_actions))\
+        .all()
 
 def create_user(db: Session, user: UserCreate):
     db_user = User(**user.model_dump())
@@ -23,11 +23,3 @@ def delete_user(db: Session, user_id: int):
         db.delete(user)
         db.commit()
     return user
-
-# Preferences
-def create_preference(db: Session, pref: UserPreferenceCreate, user_id: int):
-    db_pref = UserPreference(**pref.dict(), user_id=user_id)
-    db.add(db_pref)
-    db.commit()
-    db.refresh(db_pref)
-    return db_pref

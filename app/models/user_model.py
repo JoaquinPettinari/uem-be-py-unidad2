@@ -10,7 +10,9 @@ class User(Base):
     age = Column(Integer)
     country = Column(String)
 
-    preferences = relationship("UserPreference", back_populates="user")
+    searches = relationship("SearchHistory", back_populates="user")
+    music_actions = relationship("MusicAction", back_populates="user")
+
 
 
 

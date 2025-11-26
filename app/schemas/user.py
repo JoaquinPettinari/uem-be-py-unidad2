@@ -1,6 +1,6 @@
 from pydantic import BaseModel
-from typing import List
-from .user_preference import UserPreference  # <-- schema, no modelo ORM
+from .music_action import MusicActionResponse
+from .search_history import SearchHistoryResponse
 
 class UserBase(BaseModel):
     name: str
@@ -12,6 +12,7 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     id: int
-    preferences: List[UserPreference] = []
+    searches: list[SearchHistoryResponse] = []
+    music_actions: list[MusicActionResponse] = []
 
     model_config = {"from_attributes": True}
