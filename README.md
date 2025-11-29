@@ -32,6 +32,8 @@ python -m venv venv
 
 // Activar el entorno virtual (Windows):
 venv\Scripts\activate
+// En mac
+source venv/bin/activate
 ```
 
 Si todo va bien, deberías ver algo así al inicio de tu consola:
@@ -59,3 +61,4 @@ El servidor estará disponible en:
   - http://localhost:8000
   - Documentación automática OpenAPI: http://localhost:8000/docs
   - Documentación ReDoc: http://localhost:8000/redoc
+
