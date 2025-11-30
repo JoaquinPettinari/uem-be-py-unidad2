@@ -1,7 +1,7 @@
 from fastapi import Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database import SessionLocal
-from app.models.user_model import User
+from app.services.user_service import get_user
 
 def get_db():
     db = SessionLocal()
@@ -11,7 +11,7 @@ def get_db():
         db.close()
 
 def get_user_or_404(user_id: int, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.id == user_id).first()
+    user = get_user(db, user_id)
     if not user:
         raise HTTPException(404, "User not found")
     return user

@@ -1,16 +1,16 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
-from ..database import SessionLocal
 from app.services.spotify_service import get_spotify_token, SPOTIFY_SEARCH_URL
 from app.models.search_history_model import SearchHistory, SearchTypeEnum
 from app.models.music_action_model import MusicAction, ActionEnum
-from app.utils.dependencies import get_db
+from app.schemas.user import User
+from app.utils.dependencies import get_db, get_user_or_404
 import requests
 
 router = APIRouter(prefix="/spotify", tags=["Spotify"])
 
 @router.get("/search")
-def search_spotify(user_id: int, query: str, type: SearchTypeEnum = SearchTypeEnum.track, db: Session = Depends(get_db)):
+def search_spotify(query: str, user: User = Depends(get_user_or_404),  type: SearchTypeEnum = SearchTypeEnum.track, db: Session = Depends(get_db)):
     token = get_spotify_token()
 
     headers = {"Authorization": f"Bearer {token}"}
@@ -21,7 +21,7 @@ def search_spotify(user_id: int, query: str, type: SearchTypeEnum = SearchTypeEn
         raise HTTPException(500, "Spotify API error")
 
     db_search = SearchHistory(
-        user_id=user_id,
+        user_id=user.id,
         query=query,
         type=type,
     )
@@ -32,9 +32,9 @@ def search_spotify(user_id: int, query: str, type: SearchTypeEnum = SearchTypeEn
 
 @router.post("/action")
 def music_action(
-    user_id: int,
     spotify_id: str,
     action: ActionEnum,
+    user: User = Depends(get_user_or_404),
     type: SearchTypeEnum = SearchTypeEnum.track,
     db: Session = Depends(get_db)
 ):
@@ -44,7 +44,7 @@ def music_action(
         raise HTTPException(400, "Type must be 'track', 'album' or 'artist'")
 
     action = MusicAction(
-        user_id=user_id,
+        user_id=user.id,
         spotify_id=spotify_id,
         type=type,
         action=action
