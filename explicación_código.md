@@ -18,7 +18,7 @@ app.
 
 ### 🧩 models/
 
-Contiene los modelos de base de datos usando [SQLAlchemy]([**SQLAlchemy**](https://www.sqlalchemy.org)).
+Contiene los modelos de base de datos usando [SQLAlchemy](https://www.sqlalchemy.org).
 Representan las tablas y sus relaciones (usuarios, historial, acciones, etc.).
 
 ### 🔌 routers/
