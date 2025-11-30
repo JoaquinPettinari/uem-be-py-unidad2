@@ -89,4 +89,8 @@ El servidor estará disponible en:
   - Documentación automática OpenAPI: http://localhost:8000/docs
   - Documentación ReDoc: http://localhost:8000/redoc
 
+## Entrega del proyecto:
+
+[Explicación del código, estructura del proyecto y conclusiones](https://github.com/JoaquinPettinari/uem-be-py-unidad2/blob/main/explicación_código.md)
+
 
