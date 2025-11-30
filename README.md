@@ -24,8 +24,6 @@ git clone https://github.com/JoaquinPettinari/uem-be-py-unidad2
 cd uem-be-py-unidad2
 ```
 
-## 🧩 3. Crear y activar un entorno virtual (venv)
-
 ### 🚀 Levantar aplicación con Docker Compose
 
 Este proyecto se puede levantar fácilmente usando Docker Compose, sin necesidad de instalar Python ni dependencias en tu máquina local.
@@ -46,7 +44,9 @@ Desde la raíz del proyecto (donde está docker-compose.yml), ejecuta:
 docker compose up --build
 ```
 
-### 🐢 Levantar aplicación sin Docker Compose
+Si vas a utilizar esta opción, es importante que solamente leas la parte de las credenciales de Spotify.
+
+## 🐢 3. Crear y activar un entorno virtual (venv, sin Docker Compose)
 
 Crear el entorno virtual:
 ```bash
@@ -114,6 +114,7 @@ El servidor estará disponible en:
 ## Entrega del proyecto:
 
 [Explicación del código, estructura del proyecto y conclusiones](https://github.com/JoaquinPettinari/uem-be-py-unidad2/blob/main/explicación_código.md)
+
 
 
 
