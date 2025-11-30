@@ -6,8 +6,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - SPOTIFY_CLIENT_ID=4be566867ddf41c689294217760cf024
-      - SPOTIFY_CLIENT_SECRET=ccdb3f130fb745588ff3defa87a4e2ca
+      - SPOTIFY_CLIENT_ID=
+      - SPOTIFY_CLIENT_SECRET=
       - DATABASE_URL=sqlite:///./app.db
     volumes:
       - ./app:/app
