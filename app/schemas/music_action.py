@@ -13,5 +13,4 @@ class MusicActionBase(BaseModel):
 class MusicActionResponse(MusicActionBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}
