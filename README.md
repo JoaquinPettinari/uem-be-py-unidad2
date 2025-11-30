@@ -1,7 +1,31 @@
-# 🚀 Backend – Setup desde cero (Windows)
+# 📖 Backend – Setup desde cero (Los comandos pueden cambiar dependiendo el sistema operativo)
 
 Este documento explica cómo levantar el proyecto desde cero después de clonar el repositorio.  
 Los pasos están pensados para un usuario externo que no conoce el entorno.
+
+---
+
+## 🚀 Levantar aplicación con Docker Compose
+
+Este proyecto se puede levantar fácilmente usando Docker Compose, sin necesidad de instalar Python ni dependencias en tu máquina local.
+
+### 1️⃣ Requisitos
+
+[Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado en tu sistema (incluye Docker Compose).
+
+Para verificar la instalación:
+```bash
+docker compose version
+```
+
+### 2️⃣ Levantar la aplicación.
+
+Desde la raíz del proyecto (donde está docker-compose.yml), ejecuta:
+```bash
+docker compose up --build
+```
+
+Si utilizaste esta opción, es importante que solamente leas la sección 5.2 y la 7.
 
 ---
 
@@ -14,8 +38,6 @@ Antes de empezar, asegurate de tener instalado:
 - **pip** (incluido con Python)
 - **Virtualenv** (opcional, pero recomendado)
 
----
-
 ## 📥 2. Clonar el repositorio
 
 ```bash
@@ -24,29 +46,7 @@ git clone https://github.com/JoaquinPettinari/uem-be-py-unidad2
 cd uem-be-py-unidad2
 ```
 
-## 🧩 3. Crear y activar un entorno virtual (venv)
-
-### 🚀 Levantar aplicación con Docker Compose
-
-Este proyecto se puede levantar fácilmente usando Docker Compose, sin necesidad de instalar Python ni dependencias en tu máquina local.
-
-#### 1️⃣ Requisitos
-
-[Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado en tu sistema (incluye Docker Compose).
-
-Para verificar la instalación:
-```bash
-docker compose version
-```
-
-#### 2️⃣ Levantar la aplicación.
-
-Desde la raíz del proyecto (donde está docker-compose.yml), ejecuta:
-```bash
-docker compose up --build
-```
-
-### 🐢 Levantar aplicación sin Docker Compose
+## 🐢 3. Crear y activar un entorno virtual (venv, sin Docker Compose)
 
 Crear el entorno virtual:
 ```bash
@@ -71,7 +71,7 @@ Instalar dependencias:
 pip install -r requirements.txt
 ```
 
-## 🧩 5. Configuración del archivo .env
+## 🧩 5.1. Configuración del archivo .env
 
 Para que la aplicación pueda conectarse correctamente a Spotify y a la base de datos, necesitás configurar tus variables de entorno.
 En este repositorio vas a encontrar un archivo llamado: 
@@ -80,12 +80,12 @@ En este repositorio vas a encontrar un archivo llamado:
 .env.copy
 ```
 
-### 🎧 ¿De dónde sacar las credenciales de Spotify?
+### 🎧 5.2 ¿De dónde sacar las credenciales de Spotify?
 
 1. Entrá a https://developer.spotify.com/dashboard
 2. Creá una app nueva.
 3. Copiá el Client ID y el Client Secret.
-4. Pegalos en tu archivo .env.
+4. Pegalos en tu archivo .env **(Si optaste por la opción de Docker Compose tenes que pegar tus credenciales en docker-compose.yml)**
 
 ### 🔧 Cómo crear tu archivo .env
 Copiá el archivo de ejemplo:
@@ -105,7 +105,8 @@ Ejecutá uvicorn en modo desarrollo:
 uvicorn app.main:app --reload
 ```
 
-El servidor estará disponible en:
+
+## 📚 7. El servidor estará disponible en:
 
   - http://localhost:8000
   - Documentación automática OpenAPI: http://localhost:8000/docs
@@ -114,6 +115,11 @@ El servidor estará disponible en:
 ## Entrega del proyecto:
 
 [Explicación del código, estructura del proyecto y conclusiones](https://github.com/JoaquinPettinari/uem-be-py-unidad2/blob/main/explicación_código.md)
+
+
+
+
+
 
 
 

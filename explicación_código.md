@@ -63,6 +63,14 @@ Base de datos SQLite (solo para desarrollo local).
 Dependencias del proyecto para instalar con pip.
 
 ---
+
+## API Collection
+
+Podés importar la colección de Postman para probar la API:
+[Postman Collection](./postman_collection.json)
+
+---
+
 ## 🧭 Recorrido del Código (Cómo funciona todo junto)
 
 El punto de entrada del proyecto es **main.py**, donde se crea la aplicación con **FastAPI** y se registran todas las rutas definidas en la carpeta **routers/**. 
@@ -71,7 +79,6 @@ Estos servicios reciben y devuelven datos estructurados mediante los **Schemas d
 Finalmente, toda la persistencia se maneja mediante los modelos de **SQLAlchemy** en **models/**. 
 
 Se utiliza SQLAlchemy porque permite trabajar la base de datos usando ORM, evitando escribir SQL manualmente y facilitando cambiar de motor (SQLite, PostgreSQL, MySQL, etc.) sin modificar la lógica; además ofrece relaciones, migraciones y un manejo más seguro y expresivo que interactuar directamente con MySQL u otros motores mediante consultas crudas.
-
 
 ## 🚧 Limitaciones y Posibles Mejoras
 
