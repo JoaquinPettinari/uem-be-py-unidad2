@@ -20,7 +20,4 @@ def read_user_route(user: int = Depends(get_user_or_404)):
 
 @router.delete("/{user_id}", response_model=User)
 def delete_user_route(user_id: int, db: Session = Depends(get_db)):
-    deleted = delete_user(db, user_id)
-    if not deleted:
-        raise HTTPException(404, "User not found")
-    return deleted
+    return delete_user(db, user_id)

@@ -1,6 +1,7 @@
 from app.models.user_model import User
 from sqlalchemy.orm import Session, joinedload
 from app.schemas.user import UserCreate
+from fastapi import HTTPException
 
 def get_users(db: Session):
     return db.query(User)\
@@ -19,7 +20,9 @@ def get_user(db: Session, user_id: int):
 
 def delete_user(db: Session, user_id: int):
     user = get_user(db, user_id)
-    if user:
-        db.delete(user)
-        db.commit()
+    if not user:
+        raise HTTPException(404, "User not found")
+
+    db.delete(user)
+    db.commit()
     return user

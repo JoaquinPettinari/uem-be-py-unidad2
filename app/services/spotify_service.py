@@ -45,6 +45,16 @@ def get_music_action(user: User, action: ActionEnum, spotify_id: str, type: Sear
 
     return {"message": f"{action} saved", "data": action}
 
+def delete_music_action(db: Session, action_id: int):
+    action = db.query(MusicAction).filter(MusicAction.id == action_id).first()
+    if not action:
+        raise HTTPException(404, "Action not found")
+
+    db.delete(action)
+    db.commit()
+
+    return action
+
 def get_spotify_token():
     client_id = os.getenv("SPOTIFY_CLIENT_ID")
     client_secret = os.getenv("SPOTIFY_CLIENT_SECRET")
