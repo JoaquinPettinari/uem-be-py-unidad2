@@ -44,7 +44,7 @@ Desde la raíz del proyecto (donde está docker-compose.yml), ejecuta:
 docker compose up --build
 ```
 
-Si vas a utilizar esta opción, es importante que solamente leas la parte de las credenciales de Spotify.
+Si utilizaste esta opción, es importante que solamente leas la parte de las credenciales de Spotify.
 
 ## 🐢 3. Crear y activar un entorno virtual (venv, sin Docker Compose)
 
@@ -114,6 +114,7 @@ El servidor estará disponible en:
 ## Entrega del proyecto:
 
 [Explicación del código, estructura del proyecto y conclusiones](https://github.com/JoaquinPettinari/uem-be-py-unidad2/blob/main/explicación_código.md)
+
 
 
 
