@@ -49,8 +49,35 @@ Instalar dependencias:
 pip install -r requirements.txt
 ```
 
-## ▶️ 5. Levantar el servidor
+## 🧩 5. Configuración del archivo .env
 
+Para que la aplicación pueda conectarse correctamente a Spotify y a la base de datos, necesitás configurar tus variables de entorno.
+En este repositorio vas a encontrar un archivo llamado: 
+
+```bash
+.env.copy
+```
+
+### 🎧 ¿De dónde sacar las credenciales de Spotify?
+
+1. Entrá a https://developer.spotify.com/dashboard
+2. Creá una app nueva.
+3. Copiá el Client ID y el Client Secret.
+4. Pegalos en tu archivo .env.
+
+### 🔧 Cómo crear tu archivo .env
+Copiá el archivo de ejemplo:
+```bash
+cp .env.copy .env
+```
+
+Reemplaza los valores por los tuyos
+```bash
+SPOTIFY_CLIENT_ID=tu_client_id_de_spotify
+SPOTIFY_CLIENT_SECRET=tu_client_secret_de_spotify
+```
+
+## ▶️ 6. Levantar el servidor
 Ejecutá uvicorn en modo desarrollo:
 ```bash
 uvicorn app.main:app --reload
@@ -61,4 +88,5 @@ El servidor estará disponible en:
   - http://localhost:8000
   - Documentación automática OpenAPI: http://localhost:8000/docs
   - Documentación ReDoc: http://localhost:8000/redoc
+
 
