@@ -22,8 +22,14 @@ docker compose version
 
 Desde la raíz del proyecto (donde está docker-compose.yml), ejecuta:
 ```bash
+Por primera vez usar:
 docker compose up --build
+
+Después usar:
+docker compose up
 ```
+
+La información guardada en SQLite NO es persistente si el contenedor se borra o se recrea. Por lo tanto levantar el contenedor sin el **--build**
 
 Si utilizaste esta opción, es importante que solamente leas la sección 5.2 y la 7.
 
@@ -115,6 +121,7 @@ uvicorn app.main:app --reload
 ## Entrega del proyecto:
 
 [Explicación del código, estructura del proyecto y conclusiones](https://github.com/JoaquinPettinari/uem-be-py-unidad2/blob/main/explicación_código.md)
+
 
 
 
