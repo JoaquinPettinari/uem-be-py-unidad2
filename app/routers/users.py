@@ -3,15 +3,8 @@ from sqlalchemy.orm import Session
 from app.schemas.user import UserCreate, User
 from ..database import SessionLocal
 from app.services.user_controller import create_user, delete_user, get_user, get_users
-
+from app.utils.dependencies import get_db
 router = APIRouter(prefix="/users", tags=["Users"])
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 @router.get("/", response_model=list[User])
 def get_users_route(db: Session = Depends(get_db)):

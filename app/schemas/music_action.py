@@ -1,9 +1,14 @@
 from pydantic import BaseModel
+from enum import Enum
+
+class ActionEnum(str, Enum):
+    like = "like"
+    dislike = "dislike"
 
 class MusicActionBase(BaseModel):
     spotify_id: str
     type: str
-    status: str
+    action: ActionEnum
 
 class MusicActionResponse(MusicActionBase):
     id: int
