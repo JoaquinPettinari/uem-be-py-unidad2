@@ -62,7 +62,7 @@ Base de datos SQLite (solo para desarrollo local).
 
 Dependencias del proyecto para instalar con pip.
 
---
+---
 ## 🧭 Recorrido del Código (Cómo funciona todo junto)
 
 El punto de entrada del proyecto es **main.py**, donde se crea la aplicación con **FastAPI** y se registran todas las rutas definidas en la carpeta **routers/**. 
