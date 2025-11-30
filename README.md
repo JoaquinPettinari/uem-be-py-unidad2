@@ -24,11 +24,11 @@ git clone https://github.com/JoaquinPettinari/uem-be-py-unidad2
 cd uem-be-py-unidad2
 ```
 
-### 🚀 Levantar aplicación con Docker Compose
+## 🚀 Levantar aplicación con Docker Compose
 
 Este proyecto se puede levantar fácilmente usando Docker Compose, sin necesidad de instalar Python ni dependencias en tu máquina local.
 
-#### 1️⃣ Requisitos
+### 1️⃣ Requisitos
 
 [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado en tu sistema (incluye Docker Compose).
 
@@ -37,7 +37,7 @@ Para verificar la instalación:
 docker compose version
 ```
 
-#### 2️⃣ Levantar la aplicación.
+### 2️⃣ Levantar la aplicación.
 
 Desde la raíz del proyecto (donde está docker-compose.yml), ejecuta:
 ```bash
@@ -114,6 +114,7 @@ El servidor estará disponible en:
 ## Entrega del proyecto:
 
 [Explicación del código, estructura del proyecto y conclusiones](https://github.com/JoaquinPettinari/uem-be-py-unidad2/blob/main/explicación_código.md)
+
 
 
 
