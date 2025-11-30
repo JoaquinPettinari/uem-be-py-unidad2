@@ -25,7 +25,7 @@ Desde la raíz del proyecto (donde está docker-compose.yml), ejecuta:
 docker compose up --build
 ```
 
-Si utilizaste esta opción, es importante que solamente leas la sección 5.2.
+Si utilizaste esta opción, es importante que solamente leas la sección 5.2 y la 7.
 
 ---
 
@@ -105,7 +105,8 @@ Ejecutá uvicorn en modo desarrollo:
 uvicorn app.main:app --reload
 ```
 
-El servidor estará disponible en:
+
+## 📚 7. El servidor estará disponible en:
 
   - http://localhost:8000
   - Documentación automática OpenAPI: http://localhost:8000/docs
@@ -114,6 +115,7 @@ El servidor estará disponible en:
 ## Entrega del proyecto:
 
 [Explicación del código, estructura del proyecto y conclusiones](https://github.com/JoaquinPettinari/uem-be-py-unidad2/blob/main/explicación_código.md)
+
 
 
 
