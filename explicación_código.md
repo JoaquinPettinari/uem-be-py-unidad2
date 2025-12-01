@@ -132,6 +132,7 @@ Aunque el proyecto cumple con los objetivos propuestos y presenta una arquitectu
 - Base de datos local: se utiliza SQLite por simplicidad, lo cual no es ideal para producción. No soporta concurrencia alta ni escalabilidad.
 - Errores genéricos: algunas respuestas de error del backend podrían ser más descriptivas y consistentes.
 - Servicios sin tests automatizados: actualmente no hay cobertura de tests unitarios o de integración.
+- Agregar gets individuales con un user_id para las tablas de music_actions y search. Esto permite sacar peso sobre el get usuarios en caso de tener mucha información.
 
 ## 📝 Conclusiones y Observaciones
 
