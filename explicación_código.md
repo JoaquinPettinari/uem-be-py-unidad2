@@ -80,6 +80,48 @@ Finalmente, toda la persistencia se maneja mediante los modelos de **SQLAlchemy*
 
 Se utiliza SQLAlchemy porque permite trabajar la base de datos usando ORM, evitando escribir SQL manualmente y facilitando cambiar de motor (SQLite, PostgreSQL, MySQL, etc.) sin modificar la lógica; además ofrece relaciones, migraciones y un manejo más seguro y expresivo que interactuar directamente con MySQL u otros motores mediante consultas crudas.
 
+## 📚 Explicación de los Endpoints
+
+### 👤 Endpoints de Usuarios (/users)
+
+Estos endpoints representan un CRUD sencillo, ideal para iniciar y mantener la identidad del usuario dentro de la plataforma.
+
+Incluyen:
+- Crear usuario (POST /users/)
+- Listar todos los usuarios con su historial y acciones (GET /users/)
+- Obtener un usuario por ID (GET /users/{user_id})
+- Eliminar usuario (DELETE /users/{user_id})
+
+El propósito principal es disponer del user_id necesario para vincular el historial y los likes/dislikes.
+
+## 🔍 Endpoints de Búsqueda (/search)
+
+Este endpoint es el núcleo de la integración con Spotify.
+
+Buscar música (GET /spotify/search/?query=X&type=artist|track|album&user_id=numero)
+
+Qué hace internamente:
+- Solicita un token válido a Spotify.
+- Ejecuta una búsqueda directa a la API de Spotify.
+- Devuelve los resultados tal cual Spotify los entrega (rápido, sin almacenar contenido extra).
+- Guarda en la base de datos la query buscada
+
+Es un endpoint pensado para ser ágil, sin procesar información adicional.
+
+❤️ Endpoints de Acciones de Música (/spotify/music-actions)
+
+Estos permiten marcar elementos musicales como like o dislike.
+
+Registrar acción (POST /music-actions/)
+
+Eliminar acción (DELETE /music-actions/{action_id})
+
+Características:
+- Usan ActionEnum para evitar errores (solo like o dislike).
+- Permiten a futuro construir recomendaciones basadas en preferencias.
+
+---
+
 ## 🚧 Limitaciones y Posibles Mejoras
 
 Aunque el proyecto cumple con los objetivos propuestos y presenta una arquitectura sólida, existen algunas áreas donde se podrían introducir mejoras:
