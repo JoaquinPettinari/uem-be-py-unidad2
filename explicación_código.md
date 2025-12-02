@@ -94,7 +94,7 @@ Incluyen:
 
 El propósito principal es disponer del user_id necesario para vincular el historial y los likes/dislikes.
 
-## 🔍 Endpoints de Búsqueda (/search)
+### 🔍 Endpoints de Búsqueda (/spotify/search)
 
 Este endpoint es el núcleo de la integración con Spotify.
 
@@ -108,13 +108,15 @@ Qué hace internamente:
 
 Es un endpoint pensado para ser ágil, sin procesar información adicional.
 
-❤️ Endpoints de Acciones de Música (/spotify/music-actions)
+También podemos encontrar un GET con las búsquedas de un usuario (GET /spotify/search/{user_id})
+
+### ❤️ Endpoints de Acciones de Música (/spotify/action)
 
 Estos permiten marcar elementos musicales como like o dislike.
 
-Registrar acción (POST /music-actions/)
-
-Eliminar acción (DELETE /music-actions/{action_id})
+- Obtener las acciones de un usuario (GET /action/{user_id})
+- Registrar acción (POST /action/)
+- Eliminar acción (DELETE /action/{action_id})
 
 Características:
 - Usan ActionEnum para evitar errores (solo like o dislike).
@@ -132,7 +134,6 @@ Aunque el proyecto cumple con los objetivos propuestos y presenta una arquitectu
 - Base de datos local: se utiliza SQLite por simplicidad, lo cual no es ideal para producción. No soporta concurrencia alta ni escalabilidad.
 - Errores genéricos: algunas respuestas de error del backend podrían ser más descriptivas y consistentes.
 - Servicios sin tests automatizados: actualmente no hay cobertura de tests unitarios o de integración.
-- Agregar gets individuales con un user_id para las tablas de music_actions y search. Esto permite sacar peso sobre el get usuarios en caso de tener mucha información.
 
 ## 📝 Conclusiones y Observaciones
 
