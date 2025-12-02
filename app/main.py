@@ -7,8 +7,6 @@ from app.seed import run_seed
 
 load_dotenv()
 
-app = FastAPI()
-
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
