@@ -26,6 +26,12 @@ def get_search(query: str, user: User, type: SearchTypeEnum, db: Session):
 
     return spotify_search
 
+def get_searches_by_user_id(user: User, db: Session):
+    return db.query(SearchHistory).filter(SearchHistory.user_id == user.id).all()
+
+def get_actions_by_user_id(user: User, db: Session):
+    return db.query(MusicAction).filter(MusicAction.user_id == user.id).all()
+
 def get_music_action(user: User, action: ActionEnum, spotify_id: str, type: SearchTypeEnum, db: Session ):
     if not isinstance(action, ActionEnum):
         raise HTTPException(400, "Action must be 'like' or 'dislike'")

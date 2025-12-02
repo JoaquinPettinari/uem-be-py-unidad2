@@ -7,7 +7,6 @@ from app.utils.dependencies import get_db
 
 def run_seed(db: Session):
     try:
-
         print('------------------------')
         if db.query(User).count() > 0:
             print("Seed already executed.")
