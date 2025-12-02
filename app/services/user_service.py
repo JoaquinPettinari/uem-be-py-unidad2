@@ -4,9 +4,7 @@ from app.schemas.user import UserCreate
 from fastapi import HTTPException
 
 def get_users(db: Session):
-    return db.query(User)\
-        .options(joinedload(User.searches), joinedload(User.music_actions))\
-        .all()
+    return db.query(User).all()
 
 def create_user(db: Session, user: UserCreate):
     db_user = User(**user.model_dump())

@@ -3,8 +3,9 @@ from sqlalchemy.orm import Session
 from app.models.search_history_model import SearchTypeEnum
 from app.models.music_action_model import ActionEnum
 from app.schemas.user import User
+from app.schemas.search_history import SearchHistoryBase
 from app.schemas.music_action import MusicActionBase
-from app.services.spotify_service import get_search, get_music_action, delete_music_action
+from app.services.spotify_service import get_search, get_music_action, delete_music_action, get_searches_by_user_id, get_actions_by_user_id
 from app.utils.dependencies import get_db, get_user_or_404
 
 router = APIRouter(prefix="/spotify", tags=["Spotify"])
@@ -12,6 +13,16 @@ router = APIRouter(prefix="/spotify", tags=["Spotify"])
 @router.get("/search")
 def search_spotify(query: str, user: User = Depends(get_user_or_404),  type: SearchTypeEnum = SearchTypeEnum.track, db: Session = Depends(get_db)):
     return get_search(query, user, type, db)
+
+@router.get("/search/{user_id}", response_model=list[SearchHistoryBase])
+def get_spotify_searches(user_id: int, db: Session = Depends(get_db)):
+    user = get_user_or_404(user_id, db)
+    return get_searches_by_user_id(user, db)
+
+@router.get("/action/{user_id}", response_model=list[MusicActionBase])
+def get_spotify_actions(user_id: int, db: Session = Depends(get_db)):
+    user = get_user_or_404(user_id, db)
+    return get_actions_by_user_id(user, db)
 
 @router.post("/action")
 def music_action(
